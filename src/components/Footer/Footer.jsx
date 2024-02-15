@@ -6,7 +6,7 @@ import ProfileButtonImg from '../../Assets/Images/profile_blank.png';
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted' style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
       <MDBContainer fluid className='d-flex justify-content-between align-items-center p-3 text-center' style={{ backgroundColor: '#AA222B', height: '70px' }}>
         <div className='col-4'>
           <a href='../' className='text-reset'>
