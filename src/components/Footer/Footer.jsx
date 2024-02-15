@@ -1,77 +1,23 @@
 import React from 'react';
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import Logo from '../../Assets/Images/Logo1.jpg'
+import { MDBFooter, MDBContainer } from 'mdb-react-ui-kit';
+import BackButtonImg from '../../Assets/Images/back_button.png';
+import HomeButtonImg from '../../Assets/Images/home_button.png';
+import ProfileButtonImg from '../../Assets/Images/profile_blank.png';
+
 export default function Footer() {
   return (
-    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
-     
-
-      <section className=''>
-        <MDBContainer className='text-center text-md-start mt-5'>
-          <MDBRow className='mt-3'>
-            <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>
-                {/* <MDBIcon color='secondary' icon='gem' className='me-3' /> */}
-                <img src={Logo} style={{width:'300px',height:'50px'}}/>
-              </h6>
-              <p>
-              Willkommen auf ServiceSparrow! Ein Online Dienstleistungsportal für Schüler/innen und Student/innen.
-              </p>
-            </MDBCol>
-
-            <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Pages</h6>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Home
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                Über uns
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                Kontakt
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Einstellungen
-                </a>
-              </p>
-            </MDBCol>
-
-         
-
-            <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
-              <p >
-                <MDBIcon color='secondary' icon='home'  />
-                Wien, W 1220, AUT
-              </p>
-              <p >
-                <MDBIcon color='secondary' icon='envelope'  />
-                helpdesk.servicesparrow@gmail.com
-              </p>
-              <p>
-                <MDBIcon color='secondary' icon='phone'/> + 43 681 123456
-              </p>
-              <p>
-                <MDBIcon color='secondary' icon='print' /> + 43 681 123456
-              </p>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
-
-      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-        © 2024 Copyright:
-        <a className='text-reset fw-bold'>
-          ServiceSparrow.com
+    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted' style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+      <MDBContainer fluid className='d-flex justify-content-between align-items-center p-3 text-center' style={{ backgroundColor: '#AA222B', height: '100px' }}>
+        <a href='../' className='text-reset'>
+          <img src={BackButtonImg} alt='Back' style={{ maxHeight: '20%', maxWidth: '20%' }} />
         </a>
-      </div>
+        <a href='../' className='text-reset'>
+          <img src={HomeButtonImg} alt='Home' style={{ maxHeight: '20%', maxWidth: '20%' }} />
+        </a>
+        <a href='myjobs' className='text-reset'>
+          <img src={ProfileButtonImg} alt='MyJobs' style={{ maxHeight: '17%', maxWidth: '17%' }} />
+        </a>
+      </MDBContainer>
     </MDBFooter>
   );
 }

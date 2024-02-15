@@ -1,6 +1,6 @@
 import axios from 'axios'
-//const URL = "http://localhost:5000/api/v1/"
-const URL = "https://service-sparrow-backend.vercel.app/api/v1/"
+const URL = "http://localhost:5000/api/v1/"
+//const URL = "https://service-sparrow-backend.vercel.app/api/v1/"
 
 export async function getData() {
   try {
