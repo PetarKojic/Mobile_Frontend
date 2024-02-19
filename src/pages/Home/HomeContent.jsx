@@ -40,4 +40,4 @@ const HomeContent = () => {
         </Container>
     )
 }
-export default HomeContent;
+export default HomeContent;     
