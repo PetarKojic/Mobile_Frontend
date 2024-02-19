@@ -32,12 +32,8 @@ const Data = [
 ]
 const Header = ({ show }) => {
   const [selectedValue, setSelectedValue] = React.useState(null);
-
-  const handleChange = (event, value) => {
-    setSelectedValue(value);
-  };
-  const navigate = useNavigate()
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showImpressum, setShowImpressum] = useState(false); // Zustandsvariable für das Impressum
+  const [showNavbar, setShowNavbar] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isMobile = useMediaQuery('(min-width: 450px)');
 
@@ -50,13 +46,22 @@ const Header = ({ show }) => {
     }
   }, []);
 
+  const handleChange = (event, value) => {
+    setSelectedValue(value);
+  };
+
   const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar)
-  }
+    setShowNavbar(!showNavbar);
+    setShowImpressum(false); // Setzen Sie das Impressum auf false, wenn das Hamburger-Menü angezeigt wird
+  };
+
+  const toggleImpressum = () => {
+    setShowImpressum(!showImpressum);
+  };
 
   return (
     <div className='nav-container'>
-      <nav className="navbar" >
+      <nav className="navbar">
         <div className="container">
           <div>
             <img src={Brand} className="logo" />
@@ -65,13 +70,11 @@ const Header = ({ show }) => {
             <img src={Hamburger} />
           </div>
 
-
-          <div className={`nav-elements  ${showNavbar && 'active'}`}>
+          <div className={`nav-elements ${showNavbar && 'active'}`}>
             <ul>
-              {show === 'false' ? <></>
-                :
+              {show === 'false' ? <></> :
 
-                <li style={{ display: 'flex', flexDirection: isMobile ? 'row' :'column' }}>
+                <li style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', borderRadius: '8px' }}>
 
                   <Autocomplete
                     value={selectedValue}
@@ -82,7 +85,7 @@ const Header = ({ show }) => {
 
                     renderInput={(params) => <TextField {...params} label="Suche nach"
                       sx={{
-                        "& input": { color: '#000', fontSize: '15px', fontWeight: '300' },
+                        "& input": { color: '#000', fontSize: '15px', fontWeight: '300', borderRadius: '8px' },
 
                       }}
                     />}
@@ -103,25 +106,44 @@ const Header = ({ show }) => {
               }
 
               <li>
+                {/* Button Impressum */}
+                <button onClick={toggleImpressum} style={{ marginLeft: '10px', backgroundColor: '#AA222B', color: '#fff', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>Impressum</button>
+              </li>
+
+              <li>
+                {/* Impressum */}
+                {showNavbar && showImpressum && (
+                  <div className="impressum" style={{ maxWidth: '300px', border: '1px solid #ccc', padding: '10px', fontSize: '14px', marginTop: '10px' }}>
+                    <p>Willkommen auf ServiceSparrow! Ein Online Dienstleistungsportal für Schüler/innen und Student/innen.</p>
+                    <p>CONTACT</p>
+                    <p>Wien, W 1220, AUT</p>
+                    <p>helpdesk.servicesparrow@gmail.com</p>
+                    <p>+43 681 123456</p>
+                    <p>+43 681 123456</p>
+                    <p>© 2024 Copyright: ServiceSparrow.com</p>
+                  </div>
+                )}
+              </li>
+
+              <li>
                 <UserMenu />
               </li>
             </ul>
-
-            {/* {isLoggedIn ? (
-                  <UserMenu />
-                ) : (
-                  <BackgroundChecked1 onClick={() => navigate('/register')}>
-                    <TextChecked>LOG IN</TextChecked>
-                  </BackgroundChecked1>
-                )} */}
           </div>
 
         </div>
       </nav>
-
-
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
 
 export default Header
